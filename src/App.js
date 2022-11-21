@@ -5,8 +5,8 @@ import Users from "./Users";
 function App() {
   return (
     <div>
-      <Users urlEnd="/users" />
-      <Posts urlEnd="/posts" />
+      <Users urlEnd="users" />
+      <Posts urlEnd="posts" />
     </div>
   );
 }
