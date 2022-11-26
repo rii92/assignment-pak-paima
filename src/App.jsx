@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
-import BoldContext from "./BoldContext";
-import Post from "./Post";
+import { useState, useEffect, useContext } from "react";
 import User from "./User";
+import Post from "./Post";
+import DialogContext from "./context/DialogProvider";
 
 function App() {
   const [userURL, setUserURL] = useState("/users");
   const [postURL, setPostURL] = useState("/posts");
-  const [toggle, setToggle] = useState(false);
-  const [bold, setBold] = useState(false);
+
+  const dialogCtx = useContext(DialogContext)
 
   console.log("App called");
-  console.log("Toggle:", toggle);
-  console.log("Bold :", bold);
+  console.log("Ctx.dialog:", dialogCtx.dialog);
 
   useEffect(() => {
     console.log("APP MOUNTED");
@@ -23,31 +22,18 @@ function App() {
   const handleUserRequest = (event) => {
     event.preventDefault();
     console.log("Toggle Clicked");
-    setToggle((prev) => !prev);
-  };
-
-  const handleBoldRequest = (event) => {
-    event.preventDefault();
-    console.log("Bold Clicked");
-    setBold((prev) => !prev);
+    dialogCtx.setDialog((prev) => !prev);
   };
 
   return (
-    <div>
-      <BoldContext.Provider value={{ isBold: bold }}>
+      <div>
         <Post urlEnd={postURL} />
         <User urlEnd={userURL} />
-      </BoldContext.Provider>
-      {/* <User urlEnd={userURL} key={Math.floor(Math.random() * 101)} /> */}
-      <div>
-        <button onClick={handleUserRequest}>Toggle</button>
+        {/* <User urlEnd={userURL} key={Math.floor(Math.random() * 101)} /> */}
+        <div>
+          <button onClick={handleUserRequest}>Toggle</button>
+        </div>
       </div>
-      <div>
-        <button onClick={handleBoldRequest}>
-          {bold && <b>Bold</b>} {!bold && <p>no bold</p>}
-        </button>
-      </div>
-    </div>
   );
 }
 
