@@ -1,16 +1,16 @@
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import useFetch from "./useFetch";
-import { useEffect, useContext } from "react";
-import DialogContext from "./context/DialogProvider";
-import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import CardContent from "@mui/material/CardContent";
+import { useContext, useEffect } from "react";
+import DialogContext from "./context/DialogProvider";
+import useFetch from "./useFetch";
 
 const User = (props) => {
   const [data] = useFetch(props.urlEnd);
