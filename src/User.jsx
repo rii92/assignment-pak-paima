@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import { useContext, useEffect } from "react";
 import DialogContext from "./context/DialogProvider";
+import ModalBox from "./ModalBox";
 import useFetch from "./useFetch";
 
 const User = (props) => {
@@ -73,6 +74,7 @@ const User = (props) => {
           </CardContent>
         </Card>
       )}
+      <ModalBox />
     </>
   );
 };
